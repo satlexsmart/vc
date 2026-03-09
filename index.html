@@ -50,10 +50,10 @@
                 
                 <div class="panel-body" id="chat-view">
                     <div id="chat-flow" class="scroll-area"></div>
-                    <form id="messenger-form">
+                    <div id="messenger-form" class="chat-input-container">
                         <input type="text" id="msg-input" placeholder="Type a message..." autocomplete="off">
-                        <button type="submit" class="send-btn material-symbols-outlined">send</button>
-                    </form>
+                        <button id="send-msg-btn" class="send-btn material-symbols-outlined">send</button>
+                    </div>
                 </div>
 
                 <div class="panel-body hidden" id="participants-view">
@@ -74,6 +74,9 @@
                 </button>
                 <button class="ctrl-btn" id="share-screen" title="Share Screen">
                     <span class="material-symbols-outlined">present_to_all</span>
+                </button>
+                <button class="ctrl-btn" id="record-btn" title="Record Meeting">
+                    <span class="material-symbols-outlined">radio_button_checked</span>
                 </button>
                 <button class="ctrl-btn danger" id="leave-btn" title="Leave Meeting">
                     <span class="material-symbols-outlined">call_end</span>
