@@ -3,34 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satlex Stealth | Final</title>
+    <title>Satlex Meet | Pro P2P</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js" defer></script>
     <script src="script.js" defer></script>
 </head>
-<body class="all-black">
-    <div id="debug-log">System Initializing...</div>
-
-    <div id="lobby" class="fullscreen-overlay">
-        <div class="setup-card">
-            <h1 class="logo">SATLEX</h1>
-            <div class="monitor">
-                <video id="preview" autoplay muted playsinline></video>
-                <div id="hardware-status">OFFLINE</div>
+<body>
+    <div id="app" class="app-container">
+        <div id="setup-screen" class="modal-overlay">
+            <div class="glass-card setup-box">
+                <h1>Satlex <span>Meet</span></h1>
+                <p>Check your audio and video</p>
+                <div class="preview-window">
+                    <video id="setup-preview" autoplay muted playsinline></video>
+                </div>
+                <input type="text" id="username-field" placeholder="Enter your name" autofocus maxlength="50">
+                <div id="error-message" class="error-text hidden"></div>
+                <button id="entry-btn" class="glow-button">Join Meeting</button>
             </div>
-            <input type="text" id="name-tag" placeholder="ENTER NAME">
-            <button id="connect-btn">INITIALIZE CONNECTION</button>
         </div>
+
+        <nav class="main-nav">
+            <div class="brand">
+                <span class="material-symbols-outlined icon-blue">videocam</span>
+                <strong>Satlex Meet</strong>
+                <span class="timer" id="call-timer">00:00</span>
+            </div>
+            <div class="nav-actions">
+                <button id="copy-btn" class="pill-button">
+                    <span class="material-symbols-outlined">link</span> Copy Invite Link
+                </button>
+            </div>
+        </nav>
+
+        <main class="stage">
+            <div id="video-grid" class="dynamic-grid"></div>
+            
+            <aside id="side-panel" class="panel hidden">
+                <div class="panel-header">
+                    <button class="tab active" data-target="chat-view">Chat</button>
+                    <button class="tab" data-target="participants-view">People (<span id="people-count">1</span>)</button>
+                    <button class="close-panel material-symbols-outlined" id="close-panel">close</button>
+                </div>
+                
+                <div class="panel-body" id="chat-view">
+                    <div id="chat-flow" class="scroll-area"></div>
+                    <form id="messenger-form">
+                        <input type="text" id="msg-input" placeholder="Type a message..." autocomplete="off">
+                        <button type="submit" class="send-btn material-symbols-outlined">send</button>
+                    </form>
+                </div>
+
+                <div class="panel-body hidden" id="participants-view">
+                    <div id="participants-list" class="scroll-area">
+                        </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="controls-shelf">
+            <div class="left-controls"></div>
+            <div class="center-controls">
+                <button class="ctrl-btn" id="toggle-mic" title="Mute/Unmute">
+                    <span class="material-symbols-outlined">mic</span>
+                </button>
+                <button class="ctrl-btn" id="toggle-cam" title="Start/Stop Video">
+                    <span class="material-symbols-outlined">videocam</span>
+                </button>
+                <button class="ctrl-btn" id="share-screen" title="Share Screen">
+                    <span class="material-symbols-outlined">present_to_all</span>
+                </button>
+                <button class="ctrl-btn danger" id="leave-btn" title="Leave Meeting">
+                    <span class="material-symbols-outlined">call_end</span>
+                </button>
+            </div>
+            <div class="right-controls">
+                <button class="ctrl-btn" id="panel-toggle" title="Chat & Participants">
+                    <span class="material-symbols-outlined">chat</span>
+                </button>
+            </div>
+        </footer>
+
+        <div id="toast-container" class="toast-container"></div>
     </div>
-
-    <main id="grid" class="dynamic-grid"></main>
-
-    <footer class="dock">
-        <button id="mic-btn" class="ctrl">🎙️</button>
-        <button id="cam-btn" class="ctrl">📷</button>
-        <button id="share-btn" class="ctrl">🖥️</button>
-        <button id="rec-btn" class="ctrl">⏺️ REC</button>
-        <button onclick="location.reload()" class="ctrl danger">📞</button>
-    </footer>
 </body>
 </html>
