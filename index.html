@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satlex Stealth | Final</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="all-black">
+    <div id="debug-log">System Initializing...</div>
+
+    <div id="lobby" class="fullscreen-overlay">
+        <div class="setup-card">
+            <h1 class="logo">SATLEX</h1>
+            <div class="monitor">
+                <video id="preview" autoplay muted playsinline></video>
+                <div id="hardware-status">OFFLINE</div>
+            </div>
+            <input type="text" id="name-tag" placeholder="ENTER NAME">
+            <button id="connect-btn">INITIALIZE CONNECTION</button>
+        </div>
+    </div>
+
+    <main id="grid" class="dynamic-grid"></main>
+
+    <footer class="dock">
+        <button id="mic-btn" class="ctrl">🎙️</button>
+        <button id="cam-btn" class="ctrl">📷</button>
+        <button id="share-btn" class="ctrl">🖥️</button>
+        <button id="rec-btn" class="ctrl">⏺️ REC</button>
+        <button onclick="location.reload()" class="ctrl danger">📞</button>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+:root { --b: #000; --acc: #00f2ff; }
+body { background: var(--b); color: #fff; margin: 0; font-family: monospace; overflow: hidden; }
+
+/* DEBUG CONSOLE */
+#debug-log {
+    position: fixed; top: 10px; left: 10px; width: 250px; height: 150px;
+    background: rgba(0,0,0,0.8); font-size: 10px; overflow-y: auto;
+    z-index: 5000; padding: 10px; border: 1px solid #222; pointer-events: none;
+}
+
+.fullscreen-overlay {
+    position: fixed; inset: 0; background: var(--b);
+    display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+
+.setup-card { background: #0a0a0a; padding: 40px; border: 1px solid #111; text-align: center; }
+.monitor { width: 350px; aspect-ratio: 16/9; background: #000; margin: 20px 0; border: 1px solid #222; position: relative;}
+#preview { width: 100%; height: 100%; object-fit: cover; }
+#hardware-status { position: absolute; top: 5px; right: 5px; font-size: 9px; color: var(--acc); }
+
+#name-tag { background: transparent; border: 1px solid #333; color: #fff; padding: 10px; width: 100%; margin-bottom: 10px; text-align: center; }
+#connect-btn { background: var(--acc); color: #000; border: none; padding: 12px; width: 104%; cursor: pointer; font-weight: bold; }
+
+.dynamic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); height: 100vh; }
+.v-box { position: relative; border: 1px solid #111; }
+.v-box video { width: 100%; height: 100%; object-fit: cover; }
+.v-box span { position: absolute; bottom: 10px; left: 10px; font-size: 10px; background: rgba(0,0,0,0.5); padding: 2px 5px; }
+
+.dock {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: rgba(10,10,10,0.9); padding: 10px 20px; border-radius: 5px;
+    display: flex; gap: 20px; border: 1px solid #222;
+}
+
+.ctrl { background: none; border: none; color: white; cursor: pointer; font-size: 20px; }
+.ctrl.danger { color: #ff3b30; }
+.rec-on { color: #ff0033; animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: 0.5; } }
